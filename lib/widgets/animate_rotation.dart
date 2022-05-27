@@ -1,8 +1,8 @@
 import 'package:animate_on_start/widgets/behvior/auto_start_behavior.dart';
 import 'package:flutter/material.dart';
 
-class AnimateRotationOnStart extends StatefulWidget {
-  const AnimateRotationOnStart({
+class CustomAnimateRotation extends StatefulWidget {
+  const CustomAnimateRotation({
     Key? key,
     required this.child,
     this.rotateAnimateDuration = const Duration(seconds: 1),
@@ -10,6 +10,7 @@ class AnimateRotationOnStart extends StatefulWidget {
     this.rotateSecondValue = 1,
     this.curve = Curves.easeInOut,
     this.onAnimationEnd,
+    this.onAnimationStart,
     this.isRepeat = false,
   }) : super(key: key);
 
@@ -17,22 +18,35 @@ class AnimateRotationOnStart extends StatefulWidget {
   final Widget child;
   final Curve curve;
   final Function()? onAnimationEnd;
+  final Function()? onAnimationStart;
   final double rotateFirstValue;
   final double rotateSecondValue;
   final bool isRepeat;
 
   @override
-  AutoStartBehavior<AnimateRotationOnStart> createState() =>
+  AutoStartBehavior<CustomAnimateRotation> createState() =>
       // ignore: no_logic_in_create_state
-      _AnimateRotationOnStartState(
-          isRepeat: isRepeat, duration: rotateAnimateDuration);
+      _CustomAnimateRotationState(
+        isRepeat: isRepeat,
+        duration: rotateAnimateDuration,
+        onEnd: onAnimationEnd,
+        onStart: onAnimationStart,
+      );
 }
 
-class _AnimateRotationOnStartState
-    extends AutoStartBehavior<AnimateRotationOnStart> {
-  _AnimateRotationOnStartState(
-      {required bool isRepeat, required Duration duration})
-      : super(isRepeat: isRepeat, duration: duration);
+class _CustomAnimateRotationState
+    extends AutoStartBehavior<CustomAnimateRotation> {
+  _CustomAnimateRotationState({
+    required bool isRepeat,
+    required Duration duration,
+    Function()? onEnd,
+    Function()? onStart,
+  }) : super(
+          isRepeat: isRepeat,
+          duration: duration,
+          onEnd: onEnd,
+          onStart: onStart,
+        );
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:animate_on_start/widgets/behvior/auto_start_behavior.dart';
 import 'package:flutter/material.dart';
 
-class AnimateRotationOutIn extends StatefulWidget {
-  const AnimateRotationOutIn({
+class CustomAnimatePosition extends StatefulWidget {
+  const CustomAnimatePosition({
     Key? key,
     this.leftFinish = 0,
     this.leftInit = 0,
@@ -12,6 +12,8 @@ class AnimateRotationOutIn extends StatefulWidget {
     this.topInit = 0,
     this.bottomFinish = 0,
     this.bottomInit = 0,
+    this.onAnimationEnd,
+    this.onAnimationStart,
     this.curve,
     required this.child,
     this.positionAnimateDuration = Duration.zero,
@@ -29,16 +31,19 @@ class AnimateRotationOutIn extends StatefulWidget {
   final double bottomInit;
   final Widget child;
 
+  final Function()? onAnimationEnd;
+  final Function()? onAnimationStart;
+
   @override
-  AutoStartBehavior<AnimateRotationOutIn> createState() =>
+  AutoStartBehavior<CustomAnimatePosition> createState() =>
       // ignore: no_logic_in_create_state
-      _AnimateRotationOutInState(
+      _CustomAnimatePositionState(
           isRepeat: false, duration: positionAnimateDuration);
 }
 
-class _AnimateRotationOutInState
-    extends AutoStartBehavior<AnimateRotationOutIn> {
-  _AnimateRotationOutInState(
+class _CustomAnimatePositionState
+    extends AutoStartBehavior<CustomAnimatePosition> {
+  _CustomAnimatePositionState(
       {required bool isRepeat, required Duration duration})
       : super(isRepeat: isRepeat, duration: duration);
 
