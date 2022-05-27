@@ -1,5 +1,11 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:animate_on_start/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 void main() {
-  test('adds one to input values', () {});
+  const MaterialApp(
+    home: Scaffold(
+        body: AnimateRotationOnStart(
+      child: Text('data'),
+    )),
+  );
 }
