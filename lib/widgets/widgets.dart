@@ -1,3 +1,3 @@
-export 'abstract_state.dart';
-export 'animated_position.dart';
-export 'animated_rotation.dart';
+export 'behvior/auto_start_behavior.dart';
+export 'aninate_position.dart';
+export 'animate_rotation.dart';
