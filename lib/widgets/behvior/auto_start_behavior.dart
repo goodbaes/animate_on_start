@@ -29,10 +29,8 @@ abstract class AutoStartBehavior<T extends StatefulWidget> extends State<T>
     } else {
       _controller.forward();
     }
+    onStart?.call();
     _controller.addListener(() {
-      if (_controller.status == AnimationStatus.forward) {
-        onStart?.call();
-      }
       if (_controller.status == AnimationStatus.completed) {
         onEnd?.call();
       }
